@@ -1,190 +1,248 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArcEngine | Architectural & Engineering Consultants</title>
+    <title>PT. Arsitek Arupadatu | Engineering & Architectural Consultants</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#0f172a',   /* Professional Navy */
+                            accent: '#2563eb',    /* Engineering Blue */
+                            surface: '#f8fafc',   /* Light Background */
+                            darkBg: '#020617'     /* Deep Dark Background */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* Smooth scrolling for anchor links */
-        html { scroll-behavior: smooth; }
+        /* Reveal animation state */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hover Zoom Effect */
+        .project-card img {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .project-card:hover img {
+            transform: scale(1.1) rotate(0.5deg);
+        }
+
+        .filter-btn.active {
+            background-color: #2563eb !important;
+            color: white !important;
+            border-color: #2563eb !important;
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans">
+<body class="bg-brand-surface text-brand-primary font-sans transition-colors duration-500 dark:bg-brand-darkBg dark:text-slate-100">
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+    <nav class="fixed w-full z-50 bg-white/90 dark:bg-brand-darkBg/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2 font-bold text-xl tracking-tighter">
-                <i data-lucide="compass" class="text-blue-600"></i> ARCENGINE
+                <i data-lucide="building-2" class="text-brand-accent"></i> 
+                <span>ARUPADATU</span>
             </div>
-            <div class="hidden md:flex gap-8 text-sm font-medium">
-                <a href="#services" class="hover:text-blue-600 transition">Services</a>
-                <a href="#projects" class="hover:text-blue-600 transition">Projects</a>
-                <a href="#process" class="hover:text-blue-600 transition">Process</a>
-                <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Contact Us</a>
+            
+            <div class="flex items-center gap-6">
+                <div class="hidden md:flex gap-8 text-sm font-semibold uppercase tracking-wide">
+                    <a href="#services" class="hover:text-brand-accent transition">Services</a>
+                    <a href="#projects" class="hover:text-brand-accent transition">Portfolio</a>
+                    <a href="#contact" class="hover:text-brand-accent transition">Contact</a>
+                </div>
+
+                <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:ring-2 hover:ring-brand-accent transition-all">
+                    <i data-lucide="moon" id="theme-toggle-dark-icon" class="w-5 h-5 dark:hidden"></i>
+                    <i data-lucide="sun" id="theme-toggle-light-icon" class="w-5 h-5 hidden dark:block text-yellow-400"></i>
+                </button>
+
+                <a href="#contact" class="hidden md:block bg-brand-primary text-white px-5 py-2 rounded-sm hover:bg-brand-accent transition dark:bg-brand-accent">Consult Now</a>
             </div>
         </div>
     </nav>
 
-    <section class="pt-32 pb-20 px-6">
+    <section class="pt-48 pb-24 px-6">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
-                    Engineering the <span class="text-blue-600">Future</span> of Architecture.
+            <div class="reveal">
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 tracking-tight">
+                    Engineering <span class="text-brand-accent">Precision.</span>
                 </h1>
-                <p class="text-lg text-slate-600 mb-8">
-                    Providing precision-led architectural design and structural engineering solutions for complex urban environments.
+                <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 border-l-4 border-brand-accent pl-4 italic">
+                    PT. Arsitek Arupadatu: Multidisciplinary consultancy providing Architectural, Structural, and MEP engineering solutions with ISO-standard rigour.
                 </p>
-                <div class="flex gap-4">
-                    <a href="#projects" class="border-2 border-slate-900 px-6 py-3 font-bold hover:bg-slate-900 hover:text-white transition">View Portfolio</a>
-                </div>
+                <a href="#projects" class="inline-block bg-brand-primary dark:bg-brand-accent text-white px-8 py-4 font-bold rounded shadow-xl hover:translate-y-[-2px] transition-transform">Explore Portfolio</a>
             </div>
-            <div class="relative">
-                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1000" alt="Architecture" class="rounded-lg shadow-2xl">
+            <div class="relative reveal" style="transition-delay: 200ms;">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200" alt="Consultancy" class="rounded-xl shadow-2xl dark:opacity-80">
             </div>
         </div>
     </section>
 
-    <section id="services" class="py-20 bg-white px-6">
-        <div class="max-w-7xl mx-auto text-center mb-16">
-            <h2 class="text-3xl font-bold mb-4 tracking-tight">Multidisciplinary Consultancy Services</h2>
-            <p class="text-slate-500 max-w-2xl mx-auto">Providing end-to-end technical expertise for complex architectural and engineering projects.</p>
+    <section id="services" class="py-24 bg-white dark:bg-slate-900/30 px-6 transition-colors">
+        <div class="max-w-7xl mx-auto text-center mb-16 reveal">
+            <h2 class="text-3xl font-bold mb-4 tracking-tight uppercase">Multidisciplinary Services</h2>
+            <div class="h-1 w-20 bg-brand-accent mx-auto"></div>
         </div>
-        
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
-            
-            <div class="p-8 border border-slate-100 bg-slate-50 rounded-xl hover:shadow-md transition-all group">
-                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    <i data-lucide="clipboard-check"></i>
-                </div>
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="p-8 bg-brand-surface dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 reveal group" style="transition-delay: 100ms;">
+                <i data-lucide="clipboard-check" class="text-brand-accent mb-4 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-xl font-bold mb-2">Planning</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">Strategic feasibility studies and detailed project proposals to ensure investment viability.</p>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Feasibility studies and project proposals.</p>
             </div>
-
-            <div class="p-8 border border-slate-100 bg-slate-50 rounded-xl hover:shadow-md transition-all group">
-                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    <i data-lucide="pencil-ruler"></i>
-                </div>
+            <div class="p-8 bg-brand-surface dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 reveal group" style="transition-delay: 200ms;">
+                <i data-lucide="pencil-ruler" class="text-brand-accent mb-4 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-xl font-bold mb-2">Design</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">Integrated Architectural, Structural, and MEP (Mechanical, Electrical, & Plumbing) design solutions.</p>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Integrated Arch, Structural, and MEP Design.</p>
             </div>
-
-            <div class="p-8 border border-slate-100 bg-slate-50 rounded-xl hover:shadow-md transition-all group">
-                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    <i data-lucide="calculator"></i>
-                </div>
+            <div class="p-8 bg-brand-surface dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 reveal group" style="transition-delay: 300ms;">
+                <i data-lucide="calculator" class="text-brand-accent mb-4 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-xl font-bold mb-2">Cost Management</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">Expert Quantity Surveying (QS) and rigorous cost estimation to maintain budgetary control.</p>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Quantity Surveying and rigorous estimation.</p>
             </div>
-
-            <div class="p-8 border border-slate-100 bg-slate-50 rounded-xl hover:shadow-md transition-all group">
-                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    <i data-lucide="search-check"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Audit & Assessment</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">Comprehensive building audits, safety assessments, and structural integrity evaluations.</p>
+            <div class="p-8 bg-brand-surface dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 reveal group" style="transition-delay: 400ms;">
+                <i data-lucide="search-check" class="text-brand-accent mb-4 group-hover:scale-110 transition-transform"></i>
+                <h3 class="text-xl font-bold mb-2">Audit</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Building audit and safety assessments.</p>
             </div>
-
-            <div class="p-8 border border-slate-100 bg-slate-50 rounded-xl hover:shadow-md transition-all group">
-                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    <i data-lucide="briefcase"></i>
-                </div>
+            <div class="p-8 bg-brand-surface dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 reveal group" style="transition-delay: 500ms;">
+                <i data-lucide="briefcase" class="text-brand-accent mb-4 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-xl font-bold mb-2">Management</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">Professional project supervision and construction management ensuring technical compliance.</p>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">Supervision and construction management.</p>
             </div>
-
         </div>
     </section>
 
-    <section id="projects" class="py-20 bg-slate-50 px-6">
+    <section id="projects" class="py-24 px-6 overflow-hidden">
         <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 reveal">
                 <div>
-                    <h2 class="text-3xl font-bold mb-2 tracking-tight">Featured Projects</h2>
-                    <p class="text-slate-500">A showcase of our precision engineering and architectural excellence.</p>
+                    <h2 class="text-3xl font-bold mb-2 uppercase tracking-tighter">Project Portfolio</h2>
+                    <p class="text-brand-accent text-xs font-bold uppercase tracking-widest">ISO 12006-2 Classification</p>
                 </div>
-                <div class="flex gap-2">
-                    <span class="px-4 py-1 bg-blue-600 text-white text-sm rounded-full cursor-pointer">All</span>
-                    <span class="px-4 py-1 bg-white border border-slate-200 text-slate-600 text-sm rounded-full hover:bg-slate-100 cursor-pointer transition">Commercial</span>
-                    <span class="px-4 py-1 bg-white border border-slate-200 text-slate-600 text-sm rounded-full hover:bg-slate-100 cursor-pointer transition">Industrial</span>
+                <div class="flex flex-wrap gap-2" id="filter-container">
+                    <button data-filter="all" class="filter-btn active px-4 py-1 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[10px] font-bold rounded-full border border-slate-200 dark:border-slate-700 uppercase transition-all">All</button>
+                    <button data-filter="planning" class="filter-btn px-4 py-1 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[10px] font-bold rounded-full border border-slate-200 dark:border-slate-700 uppercase transition-all">Planning</button>
+                    <button data-filter="design" class="filter-btn px-4 py-1 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[10px] font-bold rounded-full border border-slate-200 dark:border-slate-700 uppercase transition-all">Design</button>
+                    <button data-filter="audit" class="filter-btn px-4 py-1 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[10px] font-bold rounded-full border border-slate-200 dark:border-slate-700 uppercase transition-all">Audit</button>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <div class="group relative overflow-hidden rounded-xl bg-slate-200 h-80">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800" alt="Modern Office Tower" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-blue-400 text-xs font-bold uppercase tracking-widest mb-1">Commercial</span>
-                        <h3 class="text-white font-bold text-xl">The Nexus Tower</h3>
-                        <p class="text-slate-300 text-sm mt-2">Structural engineering & MEP design for a 40-story LEED certified building.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-grid">
+                <div class="project-card reveal group relative overflow-hidden rounded-xl h-96 bg-slate-900" data-category="planning">
+                    <img src="https://images.unsplash.com/photo-1506784919141-177b7ec8ee8f?q=80&w=800" class="w-full h-full object-cover opacity-70 group-hover:opacity-40 transition-opacity">
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <span class="text-brand-accent text-[10px] font-black mb-2 bg-white dark:bg-slate-900 px-2 py-0.5 w-fit">ISO: FEASIBILITY</span>
+                        <h3 class="text-white font-bold text-2xl">Masterplan Alpha</h3>
                     </div>
                 </div>
-
-                <div class="group relative overflow-hidden rounded-xl bg-slate-200 h-80">
-                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800" alt="Luxury Villa" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-blue-400 text-xs font-bold uppercase tracking-widest mb-1">Residential</span>
-                        <h3 class="text-white font-bold text-xl">Azure Heights</h3>
-                        <p class="text-slate-300 text-sm mt-2">High-end architectural design emphasizing natural light and ventilation.</p>
+                <div class="project-card reveal group relative overflow-hidden rounded-xl h-96 bg-slate-900" data-category="design" style="transition-delay: 150ms;">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800" class="w-full h-full object-cover opacity-70 group-hover:opacity-40 transition-opacity">
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <span class="text-brand-accent text-[10px] font-black mb-2 bg-white dark:bg-slate-900 px-2 py-0.5 w-fit">ISO: MEP DESIGN</span>
+                        <h3 class="text-white font-bold text-2xl">Vertex Office Hub</h3>
                     </div>
                 </div>
-
-                <div class="group relative overflow-hidden rounded-xl bg-slate-200 h-80">
-                    <img src="https://images.unsplash.com/photo-1590674899484-13da0d1b58f5?q=80&w=800" alt="Industrial Facility" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-blue-400 text-xs font-bold uppercase tracking-widest mb-1">Industrial</span>
-                        <h3 class="text-white font-bold text-xl">Vertex Logistics Hub</h3>
-                        <p class="text-slate-300 text-sm mt-2">Comprehensive building audit and warehouse management expansion.</p>
+                <div class="project-card reveal group relative overflow-hidden rounded-xl h-96 bg-slate-900" data-category="audit" style="transition-delay: 300ms;">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800" class="w-full h-full object-cover opacity-70 group-hover:opacity-40 transition-opacity">
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <span class="text-brand-accent text-[10px] font-black mb-2 bg-white dark:bg-slate-900 px-2 py-0.5 w-fit">ISO: ASSESSMENT</span>
+                        <h3 class="text-white font-bold text-2xl">Industrial Audit</h3>
                     </div>
                 </div>
-
-                <div class="group relative overflow-hidden rounded-xl bg-slate-200 h-80">
-                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800" alt="Cultural Center" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-blue-400 text-xs font-bold uppercase tracking-widest mb-1">Public Space</span>
-                        <h3 class="text-white font-bold text-xl">Starlight Pavillion</h3>
-                        <p class="text-slate-300 text-sm mt-2">Feasibility study and complex geometry structural analysis.</p>
-                    </div>
-                </div>
-
-                <div class="group relative overflow-hidden rounded-xl bg-slate-200 h-80">
-                    <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=800" alt="Modern Bridge" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span class="text-blue-400 text-xs font-bold uppercase tracking-widest mb-1">Infrastructure</span>
-                        <h3 class="text-white font-bold text-xl">The Sky Bridge</h3>
-                        <p class="text-slate-300 text-sm mt-2">Specialized structural design and construction supervision.</p>
-                    </div>
-                </div>
-
-                <div class="border-2 border-dashed border-slate-300 rounded-xl flex flex-col items-center justify-center h-80 text-slate-400 hover:border-blue-500 hover:text-blue-500 transition cursor-pointer group">
-                    <i data-lucide="plus-circle" class="w-12 h-12 mb-2 group-hover:scale-110 transition-transform"></i>
-                    <span class="font-bold">Request Portfolio</span>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-20 px-6 bg-slate-900 text-white">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-8">Start Your Project</h2>
-            <form class="grid grid-cols-1 gap-4">
-                <input type="text" placeholder="Your Name" class="p-4 rounded bg-slate-800 border border-slate-700 focus:outline-none focus:border-blue-500">
-                <input type="email" placeholder="Email Address" class="p-4 rounded bg-slate-800 border border-slate-700 focus:outline-none focus:border-blue-500">
-                <textarea placeholder="Project Brief" rows="4" class="p-4 rounded bg-slate-800 border border-slate-700 focus:outline-none focus:border-blue-500"></textarea>
-                <button type="submit" class="bg-blue-600 py-4 font-bold rounded hover:bg-blue-700 transition">Request Consultation</button>
+    <section id="contact" class="py-24 transition-colors bg-slate-100 text-brand-primary dark:bg-slate-900 dark:text-white">
+        <div class="max-w-4xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+            <div class="reveal">
+                <h2 class="text-3xl font-bold mb-4 tracking-tighter uppercase">Inquiry</h2>
+                <p class="text-slate-600 dark:text-slate-400 mb-8 italic">Discuss your technical requirements with our lead consultants.</p>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4"><i data-lucide="mail" class="text-brand-accent"></i> <span>info@arupadatu.com</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="map-pin" class="text-brand-accent"></i> <span>Jakarta, Indonesia</span></div>
+                </div>
+            </div>
+
+            <form action="https://formspree.io/f/your_formspree_id" method="POST" class="space-y-4 reveal" style="transition-delay: 200ms;">
+                <input type="text" name="name" placeholder="Full Name" required class="w-full p-4 rounded border bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 outline-none focus:border-brand-accent transition-all dark:text-white">
+                <input type="email" name="email" placeholder="Email Address" required class="w-full p-4 rounded border bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 outline-none focus:border-brand-accent transition-all dark:text-white">
+                <textarea name="message" rows="4" placeholder="Project Brief" required class="w-full p-4 rounded border bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 outline-none focus:border-brand-accent transition-all dark:text-white"></textarea>
+                <button type="submit" class="w-full bg-brand-primary dark:bg-brand-accent text-white py-4 font-bold rounded uppercase tracking-widest text-xs hover:brightness-110 shadow-lg transition-all">Submit Brief</button>
             </form>
         </div>
     </section>
 
-    <footer class="py-10 text-center text-slate-500 text-sm border-t border-slate-200">
-        <p>&copy; 2026 ArcEngine Consultants. All Rights Reserved.</p>
+    <footer class="py-12 bg-white dark:bg-brand-darkBg border-t border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="font-bold tracking-tighter text-xl mb-1">ARUPADATU</p>
+            <p class="text-slate-500 text-[10px] uppercase tracking-widest">&copy; 2026 PT. Arsitek Arupadatu. All Rights Reserved.</p>
+        </div>
     </footer>
 
     <script>
-      lucide.createIcons();
+        // 1. Icons Initialization
+        lucide.createIcons();
+
+        // 2. Dark Mode Engine
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        }
+        themeToggleBtn.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // 3. Scroll Reveal Engine
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // 4. Portfolio Filter Engine
+        const buttons = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.project-card');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.getAttribute('data-filter');
+                cards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.style.opacity = '1', 10);
+                    } else {
+                        card.style.opacity = '0';
+                        setTimeout(() => card.style.display = 'none', 500);
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
